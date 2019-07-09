@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D4B4D9E9-B487-492F-B43C-5BB0EF5FBE84}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HSXT</RootNamespace>
+    <AssemblyName>HSXT</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dbconn.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="医嘱检查.resx">
+      <DependentUpon>医嘱检查.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="医嘱用药.resx">
+      <DependentUpon>医嘱用药.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="录入电子病历.resx">
+      <DependentUpon>录入电子病历.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="模板病历管理.resx">
+      <DependentUpon>模板病历管理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="登录.resx">
+      <DependentUpon>登录.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="病人信息.resx">
+      <DependentUpon>病人信息.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="转入.resx">
+      <DependentUpon>转入.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="医嘱处理.resx">
+      <DependentUpon>医嘱处理.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="首页.resx">
+      <DependentUpon>首页.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="医嘱检查.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="医嘱检查.designer.cs">
+      <DependentUpon>医嘱检查.cs</DependentUpon>
+    </Compile>
+    <Compile Include="医嘱用药.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="医嘱用药.designer.cs">
+      <DependentUpon>医嘱用药.cs</DependentUpon>
+    </Compile>
+    <Compile Include="录入电子病历.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="录入电子病历.Designer.cs">
+      <DependentUpon>录入电子病历.cs</DependentUpon>
+    </Compile>
+    <Compile Include="模板病历管理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="模板病历管理.Designer.cs">
+      <DependentUpon>模板病历管理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="登录.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="登录.designer.cs">
+      <DependentUpon>登录.cs</DependentUpon>
+    </Compile>
+    <Compile Include="病人信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="病人信息.designer.cs">
+      <DependentUpon>病人信息.cs</DependentUpon>
+    </Compile>
+    <Compile Include="转入.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="转入.designer.cs">
+      <DependentUpon>转入.cs</DependentUpon>
+    </Compile>
+    <Compile Include="医嘱处理.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="医嘱处理.Designer.cs">
+      <DependentUpon>医嘱处理.cs</DependentUpon>
+    </Compile>
+    <Compile Include="首页.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="首页.designer.cs">
+      <DependentUpon>首页.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
