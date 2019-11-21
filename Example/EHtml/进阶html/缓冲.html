@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="js/缓冲运动.js"></script>
+    <title>Document</title>
+    <style>
+        body{overflow: hidden;}
+    div{
+width: 100px;
+height: 100px;
+background-color: rgb(161, 79, 79);
+position: absolute;
+    }
+    #d1{
+        background-color: blanchedalmond;
+    }
+    </style>
+</head>
+<body>
+   <div id="d1">俺を見て</div>
+
+</body>
+<script >
+animate($("d1"),{
+    width :200,
+    opacity:4,
+    left: 500
+})
+</script>
+</html>

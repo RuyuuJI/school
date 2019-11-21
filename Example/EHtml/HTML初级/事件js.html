@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="js/realone.js"></script>
+    <style>
+    div{
+        width: 333px;
+        height: 100px;
+        background: aquamarine;
+
+    }
+     
+    </style>
+</head>
+<body>
+    <div id="test1">鼠标位置</div>
+    <ul id="test2" style="background: beige;">鼠标在
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>  
+    <li id="xy" class="xy" style="font: red;background: rgb(177, 103, 103);">333</li>
+   </ul>
+   <input id="test2.5" type="text">
+   <input type="button" value="输入到下面去">
+    <div id="test3"> im here </div>
+    <div></div><hr>
+<a href="">無意味</a>
+<form action="submit">
+    <input type="text">
+    <input id="999" type="submit" value="提交">
+</form>
+</body> 
+<script type="text/javascript">
+var href = document.getElementsByTagName("a")[0]
+var form =document.getElementsByTagName("form")[0];
+var input =$("#999")
+href.onclick = function(e){
+    console.log("aaa");
+   // return false
+   //e.preventDefault();
+   e.returnValue = false
+
+}
+document.oncontextmenu = function(){
+    return false;
+}
+form.onsubmit = function(){
+    console.log("bbb");
+    return false;
+}
+var test1 =$("#test1")
+test1.onclick = function(e)
+{
+    e=e||event;
+    console.log(e.pageX,e.pageY)
+}
+$("#test1").onmousemove = function(e){  //鼠标位置动态获取
+    var x = e.offsetX;
+    var y = e.offsetY;
+    
+   $("#xy").innerHTML =1+ x+"px"+y
+}
+document.onkeydown =function(e){
+    console.log("dowm,ctrl:"+e.ctrlKey+"alt:"+e.altKey+".."+e.keyCode);
+}
+document.onkeyup = function(){
+    console.log("up")
+}
+$("#test2.5").onkeydown = function(e){  //键盘输入事件
+    if(e.ctrlKey && e.altKey){
+        $("#test3").innerHTML +=$("#test2.5").value
+    }
+}
+$("#test2").onclick= function(e){   //li点击事件
+    var _target = e.target  || e.srcElement;
+    if(_target.nodeName.toUpperCase() =="LI"){
+        console.log(_target.innerHTML)
+    }
+}
+ 
+</script>
+</html>

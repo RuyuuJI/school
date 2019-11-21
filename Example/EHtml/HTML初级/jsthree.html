@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="js/realone.js">
+    </script>
+    <style>
+    #4 div{
+widows: 300px;
+height: 333px;
+background-color: blue;
+    }
+    </style>
+</head>
+
+<body>
+    <div id= "0">444
+    555<div id="1" title="hello " name ="world">我是ID</div>
+    666<div class="2"> IM type</div>
+    <div name="3"> n33ame=</div>
+    <div id="4">俺はないにもない</div>
+    <button id="btn">节点操作</button>
+</div>
+</body>
+<script type="text/javascript">
+    var result = $("#0");
+    for (var i = 0; i < result.length; i++) {
+        result[i].innerHTML += ("asas")
+    }
+$("#btn").onclick = function(){
+    var node =createElementWidthTxt("div","新宝岛");
+    $("#4").parentNode.insertBefore(node,$("#4"))
+    var node =createElementWidthTxt("div","旧的宝岛");
+
+   insertAfter(node,$("#4"))
+}
+    //alert(result.childNodes.length)
+    removeSpaceNode2(result);  //移除空节点
+   // alert(result.childNodes[1].attributes["id"].nodeType)
+</script>
+
+</html>

@@ -1,0 +1,9 @@
+console.log("2");
+(function(){
+    //立即执行函数
+    console.log("2");
+    require(['./js/s.js'],function(s){
+        alert(s.s_circle(10));
+        console.log()
+    })
+})("123")

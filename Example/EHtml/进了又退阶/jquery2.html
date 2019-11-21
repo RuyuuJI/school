@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+   <link rel="stylesheet" href="css/jquery.css">
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    <div class="magnifier">
+        <div class="left">
+            <img src="img/4.jpg" alt="" srcset="">
+            <div class="float"></div>
+            <div class="mask"></div>
+        </div>
+        <dic class="right"></dic>
+    </div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    
+</body>
+<script>
+//放大镜
+(function($){  //立即执行函数
+    $.fn.extend({
+        magnifier:function(){
+            this.each(function(){
+                var that = this;
+                $('.left',this).mousemove(function(evt){
+                    var x =evt.offsetX;
+                    var y =evt.offsetY;
+                    var float =$('.float',this);
+
+                    x = x- float.width()/2;
+                    y = y- float.height()/2;
+
+                    if(x<0){x=0}
+                    if(y<0){y=0}
+                    if(x>$(this).width()-float.width()){
+                        x=$(this).width()-float.width()
+                    }
+                    if(y>$(this).height()-float.height()){
+                       y=$(this).height()-float.height()
+                    }
+                      float.css({
+                        left: x,
+                        top: y
+                    });
+                    $('.right',that).css({
+                        backgroundPosition: x*-4+'px '+ y *-4+'px'
+                    })
+                }).mouseover(function(){
+                    $('.left .float, .right',that).show();
+                }).mouseout(function(){
+                    
+                    $('.left .float, .right',that).hide();
+                });
+            })
+        }
+    })
+})(jQuery)
+$('.magnifier').magnifier()
+
+//自定义插件(彩色) $.fn.a=function(){}  ===$.fn.extend({a:function},b:function)
+//  (function($){
+//      $.fn.extend({
+//          randomColor:function(){
+   
+//              function random(){
+//                 var r = Math.floor(Math.random()*255)
+//                 var g = Math.floor(Math.random()*255)
+//                 var b = Math.floor(Math.random()*255)
+//                 var a = Math.random();
+//                 console.log('ss')
+//                 return 'rgba('+r+','+g+','+b+','+a+')'
+//              }
+//              this.each(function(index){
+//                 $(this).css({
+//                     backgroundColor:random()
+//                 });
+
+//              })
+//          }
+//      })
+//  })(jQuery);
+//  $('li').randomColor();
+    //节点操作
+var el = $('<div><h1>❤</h1></div>');
+//$('body').append($el);
+el.appendTo('body');
+
+$('ul').prepend('<li>----</li>')
+el.prependTo('ul>li:eq(2)')
+$('ul>li').on('click',function(){
+    $(this).empty();
+})
+</script>
+</html>

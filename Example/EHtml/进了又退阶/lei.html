@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/lei.js"></script>
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    //单例模式  
+    var s1 = new darkmaster();
+    var s2 = new darkmaster();
+    var s3 =darkmaster();
+    console.log(s1===s3)
+//工厂模式
+var ss1 = Factory.create();
+//策略模式
+function Victory(strategy){
+    if(strategy == null){
+        console.log("sss");
+        this.strategy = new Strategy()
+    }else{
+        console.log("22")
+    this.strategy = strategy;}
+}
+Victory.prototype  = {
+    Victory:function(){
+    this.strategy.trick();
+}}
+var v =new Victory()
+v.Victory();
+//适配器模式
+var guanyu = new Guan();
+guanyu.skillone();
+//观察者模式
+
+
+</script>
+</html>

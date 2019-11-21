@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="./css/jquery.css">
+</head>
+<body>
+    <div></div>
+    <button id="switch">222</button>
+ <ul>
+     <li>1</li>
+     <li>2</li>
+     <li>3</li>
+     <li>4</li>
+     <li>5</li>
+ </ul>
+ <ol>
+     <li>1</li>
+     <li>2</li>
+     <li>3</li>
+     <li>4</li>
+     <li>5</li>
+ </ol>
+</body>
+<script>
+    //jquery ---ajax
+    $.ajax({
+        type:'get',
+        url:'txt/jsonp.json',
+        data:{
+            name:"谁"
+        },
+    success: function(res){
+        
+       // alert(res.age)
+    },
+    error:function(){}
+})
+//jquery----jsonp
+$.ajax({
+    type:'get',
+    url :'https://www.baidu.com/su',
+    dataType:'jsonp',//不同
+    jsonp:'cb',  //不同 
+    data:{
+    wd:'输入搜索'
+    }
+}).done(function(res){
+    //alert(res.s);
+})
+$('ul > li').on('mouseover',function(){
+    $(this).css('background','red');
+}).on('mouseout',function(){
+    $(this).css('background','green')
+})
+$('li:eq(3)').off('mouseover') //解绑
+$('<li>new</li>').appendTo('ul')
+
+$('ol').on('mouseover','li:even',function(){
+    $(this).css('background','red');
+}).on('mouseout',function(){
+    $(this).css('background','green')
+})
+$('<li>new</li>').appendTo('ol')
+       let i = 0;
+    console.log(i);
+   $('button:first').click(function(i){
+    if(i=1){
+$('div').show(3000);
+i--;
+console.log(i+"d");
+}else{
+    $('div').hide(2000);
+  i++;
+  console.log(i+"s");
+} 
+
+})
+    </script>
+</html>

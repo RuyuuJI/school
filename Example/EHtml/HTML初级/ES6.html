@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src=""></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="model">模板</div>
+</body>
+<script type="text/javascript">
+
+var set = new Set([1,2,2,3,4])  //去重复set结构
+console.log(set)
+//-------模板字符串
+let obj = {"name":"jon","age":20}
+let {name,age} = obj;
+var html = document.getElementById("model")
+console.log(`${name}---${age}`)
+let arr =["阿达","an","阿2布","安装","阿女"]
+function* foo(x){
+ var y = 2*(yield (x+1))
+ var z = yield(y/3);
+ return (x+y+z)
+}
+it = foo(5);
+console.log(it.next(1))  //5  此次传参数无效
+console.log(it.next(15))  // 13  上一次的yield也为13
+console.log(it.next(13))  //15*2+13+5= 44
+console.log("------------------------------------")
+class Person{
+    constructor(name){
+        this.name= name
+    }
+    say(){
+        console.log(this.name)
+    }
+}
+var per=new Person("啦啦啦啦绿绿")
+console.log(per.name)
+per.say();
+// var fo=foo(2);
+// html.innerHTML+=fo.next()+ fo.next().value+fo.next()+fo.next()+fo.next();
+
+for (i in arr){
+    html.innerHTML+=`<a href>${arr[i]}</a><br>`
+}
+let test =(a)=>{
+    let b =2
+    return b*a;
+}
+console.log(test(4))  //8
+var set = new Set([2,3,4,5,5])
+var arr1 = [...set]
+for(i of arr1){console.log(i)}  //2，3，4，5
+for (let [key,item] of set.entries()){
+    console.log(key,item)
+}
+set.forEach((item,key) =>console.log(item*2))
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="js/real.js" >
+    </script> 
+</head>
+<body>
+        <div id="str">2</div>
+<div  id="filter"></div>
+<button id="btn">我也是一个按钮</button>
+<button id="bbb" >ppppp</button>
+<div id="new">333</div>
+<div id="ne">2222222222222222222222</div>
+<div>111111111111111</div>
+<ui id ="ul1">
+    <li>llll</li>
+    <li class="qqq">wwwww</li>
+    <li class= "q2">eeeeeeee</li>
+    <li class= "qqq">rrrrrrrrrrr</li>
+
+</ui>
+<ol>
+    <li >444</li>
+    <li>222</li>
+    <li>333</li>
+    <li>1111</li>
+</ol>
+<div id="www">---------------</div>
+<script type="text/javascript">
+window.onload = function(){
+$("btn").onclick =function(){
+    mywindow =open("js数组.html","js数组")
+};
+$("bbb").onclick = function(){
+    alert(opener);
+}
+}
+var ne =$("ul1");
+var nes = getElementsByClassName(ne,"qqq");
+$("www").innerHTML=(nes.length);
+/*
+ne.innerHTML =("真是无聊");
+ne.style.backgroundColor = "blue";
+*/
+reduce();
+
+
+</script>
+</body>
+</html>

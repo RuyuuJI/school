@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.pause {
+    background-color: black;
+}
+.play{
+    background-color: chartreuse;
+}
+input{
+    width:40px;
+    height:40px;
+}
+li{
+    width: 200px;
+    height: 300px;
+}
+.magnifier .left{
+    width: 240px;
+    float: left;
+    height: 150px;
+    position: relative;
+}
+
+.magnifier .left img{width: 240px;
+height: 150px;
+width: 240px;
+}
+.magnifier .left .mask{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: black;
+    opacity: 0;
+    height: 100%;
+}
+.magnifier .float{
+    height: 50px;
+    width: 50px;
+    background:#fff;
+    opacity: .2;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.magnifier .right{
+    display: none;
+    height: 300px;
+    width: 240px;
+    background-image: url(../img/4.jpg);
+    margin-left: 50px;
+    float: left;
+}
+

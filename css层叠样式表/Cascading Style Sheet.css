@@ -1,0 +1,30 @@
+/* 层叠样式表 Cascading Style sheet  
+*
+text-align:center 让内部元素水平居中
+margin:auto 让元素本身水平居中 记得设置一下宽度
+*/
+写标签上的叫行样式，
+写在
+<style>  内的叫内部样式
+
+.1 .2间一定要有空格
+#id号{...}
+.类型名{...}
+标签名 {指定标签}}
+* {针对所有标签}
+#id号 标签名
+#ID  .class1{class ="class1  class2"}
+#ID  .class2{class ="class1  class2"  优先级大于第一个}
+
+权重属性相加 style   1000>#ID  100>.class  10>标签  1>* 0
+</style> 
+----------------------------------
+font-family:"字体类型";
+font-weight:字体粗细;
+font-style:italic 倾斜
+text-indent :每行缩进
+line-height:行高
+text-decoration:下划线什么的
+float ：浮动  排列时只参照前一个元素  不会覆盖内容元素
+overflow :auto  超出边界元素自动调整
+clear :left/right/both  谁不要受到前面浮动元素

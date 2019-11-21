@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="js/低级运动.js"></script>
+
+    <style>
+    * {
+margin: 0;
+padding: 0%;
+    }
+    body{
+        overflow:hidden ;
+    }
+    div{
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+        position: absolute;
+   
+    }
+    </style>
+</head>
+<body>
+        <div id="move1">im moving</div>
+        <div id="move2">俺も</div>
+  <div id="test">测试：</div>
+</body>
+<script type="text/javascript">
+ t=parseInt(Math.random()*66)
+console.log(t)
+  
+    var distance = 100;
+    var acc=1;
+    var move1 = document.getElementById("move1")
+    var move2= document.getElementById("move2")
+    move1.style.left=t+'%';
+    move1.style.top= t+'%';
+
+    test = $("test");
+    let obj1 ={"name":move1,"sx":3,"sy":6};
+    let obj2 ={"name":move2,"sx":6,"sy":4};
+    function move(obj){  //匀速运动
+        var  currentleft =parseInt(window.getComputedStyle(obj.name).left);
+        var  currenttop =parseInt(window.getComputedStyle(obj.name).top);
+        var left  =currentleft +obj.sx;
+       var top  =currenttop +obj.sy;
+
+        // if(sppedx < 10)
+        // {sppedx+=acc;
+        //     test.value+=sppedx
+        // }
+      
+        obj.name.style.left = left +'px'
+        obj.name.style.top = top +'px'
+        obj = check_border(obj)
+    }
+setInterval(function (){
+    move(obj1);
+    move(obj2);
+   if(check_obj(obj1,obj2)){
+  //碰撞了交换速度,但非正常逻辑碰撞
+    var tempx =obj1.sx;
+       var tempy =obj1.sy;
+       obj1.sy =obj2.sy;
+       obj1.sx =obj2.sx;
+       obj2.sx= tempx;
+       obj2.sy= tempy;
+       console.log("装了")
+   }
+
+   },10)
+        
+    </script>
+</html>

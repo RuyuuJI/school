@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="./css/jquery.css">
+</head>
+<body>
+    <h1></h1>
+    <div class="pause">ooo</div>
+    <h2>
+        <li class="tt">2s</li>
+        <li class="tt">3s</li>
+        <li class="tt">4s</li>
+        <li class="tt">5s</li>
+        <li class="tt">6s</li>
+    </h2><hr>
+    <table>
+<thead>
+    <tr>
+        <th><input type="checkbox"></th>
+        <th>111</th>
+        <th>222</th>
+        <th>333</th>
+    </tr>
+</thead>
+<tbody>
+        <tr>
+                <td><input type="checkbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+        </tr>
+        <tr>
+                <td><input type="checkbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+        </tr>
+        <tr>
+                <td><input type="checkbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+        </tr>
+        <tr>
+                <td><input type="checkbox"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+        </tr>
+</tbody>
+    </table>
+    <hr>
+    <label ><input type="checkbox" name="name" id="id">-----br</label>
+    <input type="text">
+    <ul></ul>
+</body>
+<script type="text/javascript">
+//table全选+非全选
+$('thead input').change(function(){
+    var isChecked = $(this).prop('checked');
+    console.log(isChecked+"s");
+    $('tbody input').prop('checked',isChecked)
+})
+$('tbody input').change(function(){
+    var allcount = $('tbody input').length;
+    var checkcount = $('tbody input:checked').length;
+    var isallchecked = allcount ===checkcount;
+    $('thead input').prop('checked',isallchecked)
+
+})
+//jquery--------------------------------
+var checkbox = $('input[type=checkbox]');
+$('input[type=checkbox]').change(function(){
+    console.log($(this).prop(`checked`));//
+    console.log($(this).attr(`checked`)); //设置默认属性
+})
+$('div').click(function(){
+    $(this).toggleClass('play');
+})
+//jsonP+动态标签
+var script =document.createElement('script');
+script.src = './js/回调.js';
+function get1(data){
+    console.log(data)
+}
+document.body.appendChild(script);
+
+function getData(data){
+    console.log(data);
+}
+
+//baidusearch
+function getData(data){
+    var script = document.querySelector("#jsonp-baidu");
+    script.parentNode.removeChild(script);
+    $('ul').html('');
+    for(var i =0;i<data.s.length;i++){
+        $('<li>'+data.s[i]+'</li>').appendTo('ul');
+    }
+}
+function getList(wd){
+    var script =document.createElement('script'); 
+    script.id='jsonp-baidu';
+    script.src = 'https://www.baidu.com/su?cb=getData&wd='+wd;
+    document.body.appendChild(script);
+}
+$('input').keyup(function(){
+    var wd = $(this).val();
+    getList(wd)
+})
+
+//回调
+window.onload =function(){
+var article = "";
+getParal(1).then(function(p1){
+    article+= p1+'</br>'
+    return getParal(2);
+}).then(function(p2){
+    article+= p2+'</br>'
+    return getParal(3);
+}).then(function(p3){
+    article+= p3+'</br>'
+    return getParal(4);
+}).then(function(p4){
+    article+= p4+'</br>'
+   $('h1').html(article)
+})
+}
+</script>
+</html>

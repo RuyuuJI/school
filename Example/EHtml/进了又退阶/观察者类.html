@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/观察者类.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+            <button>事件一</button>
+            <button>事件二</button>
+            <hr><hr></h1>
+</body>
+<script>
+var Message = new Message();
+var hh = new Hero("晃晃",Message);
+var zz = new Hero("制作",Message);
+var cc = new Hero("出差",Message);
+Message.attach(hh)
+Message.attach(zz)
+Message.attach(cc)
+document.querySelector('button:first-of-type').onclick = function(){
+    Message.setState('im watching you')
+}
+document.querySelector('button:last-of-type').onclick = function(){
+    Message.setState('君はとでもかっこいです')
+}
+
+
+</script>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>  * {
+        margin:0;
+        padding :0;
+    }
+    ul{
+        list-style: none;
+    }
+    .slider{
+        widows: 700px;
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+    }
+    .slider .list{
+        
+        position: absolute;
+    }
+
+    .slider .list .item{
+        width: 700px;
+        height: 400px;
+    }
+    .slider .list .item .img{
+        width: 700px;
+        height: 400px;
+        display: block;
+    }
+.slider .pre ,.slider .next{
+    position: absolute;
+    top :150px
+    
+}
+.slider .next{ right: 0;}
+.slider .pagination .bullet{
+    width: 20px;
+    height: 20px;
+    background-color: darkkhaki;
+    margin-left: 5px;
+    top: 200px;
+    float: left;
+    cursor: pointer;
+}
+.slider .pagination .bullet.focus{background-color: darkorange;}
+</style>  
+</head>
+<body>
+    <div class="slider">
+        <ul class="list">
+            <li class="item"><img src="img/1.jpg" alt=""></li>
+            <li class="item"><img src="img/2.jpg" alt=""></li>
+            <li class="item"><img src="img/3.jpg" alt=""></li>
+            <li class="item"><img src="img/4.jpg" alt=""></li>
+        </ul>
+        <button class="pre">pre</button>
+        <button class="next">pre</button>
+        <ul class="pagination">
+            <li class="bullet focus">1</li>
+            <li class="bullet">2</li>
+            <li class="bullet">3</li>
+            <li class="bullet">4</li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="js/缓冲运动.js"></script>
+    <script>
+        (function(){
+      var current ;
+         var lis;
+        var lilen;
+        var liwidth;
+        init();
+    function init(){
+        
+        current = 1;
+        var li_1 = document.querySelector('.slider .list .item:first-of-type')
+    var copy_1=li_1.cloneNode(true);//复制节点及其子内容
+   
+    var li_last = document.querySelector('.slider .list .item:last-of-type')
+    var copy_last =li_last.cloneNode(true);
+
+    var list =document.querySelector(`.slider .list`)
+    list.appendChild(copy_1);  //1添加到末尾
+    list.insertBefore(copy_last,li_1);//第一个前加last
+ 
+
+    lis=document.querySelectorAll(`.list .item`)
+
+    liwidth =lis[2].offsetwidth;
+    len=lis.length;
+   list.style.width=liwidth*len+`px`;
+   document.querySelector(`.pre`).onclick = function(){
+       console.log('333')
+       slidePre();
+    }
+    document.querySelector(`.next`).onclick = function(){
+        
+       slideNext();
+    }
+    }
+    function slideNext(){ current ++;slideTo(current);}
+    function slidePre(){ current --;slideTo(current);}
+    function stop(){}
+    function auto(){}
+    function slideTo(index){
+        var list = document.querySelector(`.slider .list`);
+        if(index ===len){
+            current =index=2;
+            list.style.left = liwidth +`px`;
+            console.log('33553')
+        }
+        if(index === -1){
+            current =index =len -3;
+            list.style.left =-(len - 2) +liwidth +`px`;
+            console.log('344')
+        }
+        var left = -index *liwidth;
+        animate(list,{
+            left: left
+        })
+    }
+    })()
+    </script>
+</body>
+</html>
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="js/缓冲运动.js"></script>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul {
+        list-style: none;
+    }
+    .slider {
+        width: 700px;
+       height: 500px;
+        border: 7px solid palegreen;
+        position: relative;
+        
+    }
+    .slider .list .item{
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        opacity: 0;
+    }
+    .slider .list .item:first-of-type{
+        opacity: 1;
+    }
+    .slider .list .item img{
+        width: 700px;
+        display: block;
+    }
+    .slider .next,.slider .pre{
+        position: absolute;
+        top: 230px;
+    }
+    .slider .next{
+        right: 0;
+    }
+    .slider .pagination{
+     position: relative;
+     top: 400px;
+    }
+    .slider .pagination .bullet{
+        width: 30px;
+        height: 30px;
+        background-color: peru;
+        margin-left: 5px;
+        border: 2px solid black;
+        cursor: pointer;  
+        float: left;
+        text-align: center;
+    }
+    .slider .pagination .bullet.focus{
+        background-color: cornflowerblue;
+    }
+    </style>
+</head>
+
+<body>
+        <div class="slider">
+            <ul class="list">
+                
+                    <li class="item"> <img src="img/1.jpg"> </li>
+                    <li class="item"><img src="img/2.jpg">  </li>
+                    <li class="item"><img src="img/3.jpg"></li>
+                    <li class="item"> <img src="img/4.jpg">  </li>
+              
+            </ul>
+            <button class="pre">Pre</button>
+            <button class="next">Next</button>
+            <ul class="pagination">
+                <li class="bullet focus" >1</li>
+                <li class="bullet">2</li>
+                <li class="bullet">3</li>
+                <li class="bullet">4</li>
+            </ul>
+        </div>
+    </body>
+    <script type="text/javascript">
+    var preIndex,nexIndex;
+    var bullets = document.querySelectorAll(`.slider .pagination li`)
+    var length;
+    init();
+    auto();  //自动轮播开启
+
+//轮播-------------------------
+//点击切换
+for(var i =0;i<bullets.length;i++){
+    bullets[i].index = i;
+    bullets[i].onclick= function(){
+      
+        preIndex = nextIndex;
+        nextIndex = this.index;
+        slideTo(preIndex,nextIndex);
+    }
+}
+
+function init(){  //翻页初始化
+    preIndex = nextIndex= 0;
+    len =document.querySelectorAll(`.list .item`).length;
+
+    document.querySelector(`.pre`).onclick = function(){
+        slide_pre();
+    }
+    document.querySelector(`.next`).onclick = function(){
+        slide_next();
+    }
+  
+}
+//向前翻页
+function slide_pre(){
+preIndex = nextIndex;
+nextIndex--;
+if(nextIndex === -1){
+    nextIndex = len-1 ;
+}
+slideTo(preIndex,nextIndex);
+}
+//向后翻页
+function slide_next(){
+    preIndex = nextIndex;
+nextIndex++ ;
+if(nextIndex === len){
+    nextIndex = 0 ;
+}
+//切换页码
+slideTo(preIndex,nextIndex);
+}
+function slideTo(pre,next){
+
+    //获取所有页面
+   var lis =document.querySelectorAll(`.list .item`)  
+  
+   bullets[pre].className ='bullet';
+   bullets[next].className = 'bullet focus';
+   animate(lis[pre],{opacity:0})
+   animate(lis[next],{opacity:100})
+ 
+}
+//自动轮播
+var id;
+function auto(){
+    clearInterval(id);
+    id = setInterval(function(){
+        slide_next()
+    },2000)
+}
+var stop=document.querySelector(`.slider`)
+stop.onmouseover= function(){
+    clearInterval(id);
+}
+stop.onmouseout = function(){auto()}
+    </script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    <h1></h1>
+</body>
+<script type="text/javascript">
+    //promise解决回调地狱
+    var promise = new Promise(function(resolve,reject){
+        setInterval(function(){
+            var num = Math.floor(Math.random()*100);
+    if(num%2===0){
+        resolve(num);
+    }else
+     {reject(num);}
+    },300);
+    
+})
+promise.then(function(num){
+    $('h1').html=num+"resolve";
+    console.log('asda'+num);
+}).catch(function(num){
+    $('h1').html(num+"reject");
+console.log('---'+num)
+});
+
+//     //发送post请求
+// var y = new XMLHttpRequest();
+
+// y.onreadystatechange = http(y)
+// y.open('post','./text.php',true);
+// y.setRequestHeader('Content-Tyoe','application/x-www-form-urlencoded')
+// y.send('user=gap&password=123')
+
+    //发送get请求txt文件
+var x = new XMLHttpRequest();
+x.onreadystatechange = http(x);
+function http(x){
+    if(x.readyState!== 4){return}
+    if(x.status>=200&&x.status<=300){
+        //responseText为string 
+        document.querySelector('h1').innerText = x.responseText;
+    }else{
+        console.error("出问题了");
+    }
+}
+x.open('get','./js/text.txt',true);//是否异步
+x.send();
+
+</script>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="js/cookie.js"></script>
+    <title>Document</title>
+
+</head>
+<body>
+<DIV>一</DIV>
+<DIV>二</DIV>
+<DIV>三</DIV>
+<DIV>四</DIV>
+<DIV>五</DIV>
+用户名<input id="username" type="text">
+密码<input id="pwd" type="password">
+七天免登录<label id="check"><input type="checkbox"></label>
+<input type="button"  id="login" value="login">
+
+</body>
+<script>
+    var input = document.getElementById("username")
+var pwd = document.getElementById("pwd")
+var cookie = document.cookie;
+
+ 
+setcookie("name1","name1",3)
+console.log("a"+cookie)
+login =document.getElementById("login")
+login.onclick=function(){
+    check=document.getElementById("check")
+    if(check.value){   //选择七天免登录
+        setcookie("username",input.value,7)
+        setcookie("password",pwd.value,7)
+    }
+}
+if(getcookie("username")){
+    input.value = getcookie("username")
+    pwd.value = getcookie("password")
+}
+
+    //-------------------
+    var reg = /w*w/gi  //多次  +至少一次  ?0或1次  |或者
+    var str = "wwwwwwwwwsw WwwfWasdas WdW fas  w2w  PPP" 
+    //console.log(str.replace(reg,"替换"))
+   arr= reg.exec(str)
+    console.log(reg.exec(str))
+    console.log(arr)
+console.log(reg.test(str),str.match(reg))
+  //\w非数字和下划线  \d数字 \s匹配空格  \{m,n}  m-n次匹配
+    var r= /0{3,6}7/gi
+    var s = "123410790";
+    console.log(r.test(s),s.match(r))
+    // /^开头元素 .+ 结尾$/
+    var re = /^start.+end$/
+    var st = "start with start and end"
+    console.log(re.test(st),st.match(re))
+    //  () 整体作为一个内容匹配  (.*) 表示一个分组
+    //[]非..
+    var a =/(.*)\s(.*)/gi
+    var b ="one two"
+    console.log(b.replace(a,"$2 $1")) //互换位置
+    input.onchange = function(){
+    var val =this.value;
+    //不能数字开头，数字字母下划线组成6-15
+    var reg = /^[a-zA-Z.]\w{5,14}&/;
+    if(reg.test(val)){
+        console.log("bingo")
+    }else{
+        console.log ("しまった")
+    }
+}
+</script>
+</html>
